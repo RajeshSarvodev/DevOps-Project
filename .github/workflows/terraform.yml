@@ -21,10 +21,10 @@ jobs:
         uses: hashicorp/setup-terraform@v3
 
       - name: Terraform Init
-        run: terraform init
+        run: terraform init -backend=false
 
       - name: Terraform Validate
         run: terraform validate
 
       - name: Terraform Plan (SAFE)
-        run: terraform plan
+        run: terraform plan -out=tfplan -input=false
