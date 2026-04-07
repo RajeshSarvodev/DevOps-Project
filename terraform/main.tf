@@ -2,7 +2,7 @@ provider "aws" {
   region = var.region
 }
 
-#  Security Group
+# Security Group
 resource "aws_security_group" "test_sg" {
   name = "test-case-sg"
 
@@ -10,7 +10,7 @@ resource "aws_security_group" "test_sg" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]   # later we will secure this
+    cidr_blocks = ["0.0.0.0/0"]   # for now
   }
 
   egress {
@@ -21,7 +21,7 @@ resource "aws_security_group" "test_sg" {
   }
 }
 
-#  EC2 Instances
+# EC2 Instances
 resource "aws_instance" "test_ec2" {
   count         = 2
   ami           = var.ami
@@ -34,7 +34,7 @@ resource "aws_instance" "test_ec2" {
   }
 }
 
-#  S3 Bucket
+# S3 Bucket
 resource "aws_s3_bucket" "bucket1" {
   bucket = var.bucket_name
 
