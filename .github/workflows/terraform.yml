@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-name: Terraform DevSecOps Pipeline
-=======
 name: Terraform CI/CD
->>>>>>> 7585da590629a7ecb9af8842f5ea827392b57f52
 
 on:
   push:
@@ -10,44 +6,22 @@ on:
       - main
 
 jobs:
-<<<<<<< HEAD
-  terraform:
-=======
   deploy:
->>>>>>> 7585da590629a7ecb9af8842f5ea827392b57f52
     runs-on: ubuntu-latest
 
     defaults:
       run:
-        working-directory: terraform
+        working-directory: terraform  # Adjust if your Terraform files are in a subfolder
 
     steps:
-<<<<<<< HEAD
-      - name: Checkout code
-=======
       - name: Checkout repository
->>>>>>> 7585da590629a7ecb9af8842f5ea827392b57f52
         uses: actions/checkout@v3
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.5.7  # You can adjust to your Terraform version
 
-<<<<<<< HEAD
-      # ✅ Format check (DevSecOps)
-      - name: Terraform Format Check
-        run: terraform fmt -check
-
-      # ✅ Initialize Terraform
-      - name: Terraform Init
-        run: terraform init
-
-      # ✅ Validate Terraform
-      - name: Terraform Validate
-        run: terraform validate
-
-      # ✅ Configure AWS credentials
-=======
->>>>>>> 7585da590629a7ecb9af8842f5ea827392b57f52
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
@@ -55,13 +29,6 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-west-2
 
-<<<<<<< HEAD
-      # ✅ Plan
-      - name: Terraform Plan
-        run: terraform plan -out=tfplan
-
-      # ✅ Apply
-=======
       - name: Terraform Init
         run: terraform init
 
@@ -71,6 +38,5 @@ jobs:
       - name: Terraform Plan
         run: terraform plan -out=tfplan
 
->>>>>>> 7585da590629a7ecb9af8842f5ea827392b57f52
       - name: Terraform Apply
         run: terraform apply -auto-approve tfplan
