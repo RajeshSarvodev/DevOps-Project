@@ -4,7 +4,7 @@ provider "aws" {
 
 # Security Group
 resource "aws_security_group" "test_sg" {
-  name = "test-case-sg"
+  name = "test-case-sg-raj1"
 
   ingress {
     from_port   = 22
