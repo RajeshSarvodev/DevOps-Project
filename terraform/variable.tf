@@ -13,5 +13,5 @@ variable "ami" {
 
 variable "bucket_name" {
   description = "Unique S3 bucket name"
-  default     = "test-case-bucket-raj12345" # ⚠️ MUST be globally unique
+  default     = "test-case-bucket-raj123999" # ⚠️ MUST be globally unique
 }
