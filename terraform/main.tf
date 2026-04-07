@@ -24,7 +24,7 @@ resource "aws_security_group" "test_sg" {
 #  EC2 Instances
 resource "aws_instance" "test_ec2" {
   count         = 2
-  ami           = ami-09dbc7ce74870d573
+  ami           = var.ami
   instance_type = var.instance_type
 
   vpc_security_group_ids = [aws_security_group.test_sg.id]
@@ -39,6 +39,6 @@ resource "aws_s3_bucket" "bucket1" {
   bucket = var.bucket_name
 
   tags = {
-    Name = "test-case-bucket-raj123"
+    Name = "test-case-bucket"
   }
 }
