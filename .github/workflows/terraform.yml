@@ -1,0 +1,49 @@
+name: Terraform DevSecOps Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: terraform
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      # ✅ Format check (DevSecOps)
+      - name: Terraform Format Check
+        run: terraform fmt -check
+
+      # ✅ Initialize Terraform
+      - name: Terraform Init
+        run: terraform init
+
+      # ✅ Validate Terraform
+      - name: Terraform Validate
+        run: terraform validate
+
+      # ✅ Configure AWS credentials
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-west-2
+
+      # ✅ Plan
+      - name: Terraform Plan
+        run: terraform plan -out=tfplan
+
+      # ✅ Apply
+      - name: Terraform Apply
+        run: terraform apply -auto-approve tfplan
