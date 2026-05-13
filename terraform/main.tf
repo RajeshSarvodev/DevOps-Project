@@ -3,7 +3,7 @@ provider "aws" {
 }
 # Security Group
 resource "aws_security_group" "test_sg" {
-  name = "Bethel-City-Sg"
+  name = "Bethel-City-Sg-aa"
 
   ingress {
     from_port   = 22
@@ -36,6 +36,6 @@ resource "aws_s3_bucket"  "my_bucket" {
   bucket = var.bucket_name
 
   tags = {
-    Name = "bethel-city-bucket-2026"
+    Name = "bethel-city-bucket aa-2026"
   }
 }
