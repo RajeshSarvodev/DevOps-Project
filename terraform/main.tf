@@ -36,6 +36,6 @@ resource "aws_s3_bucket"  "my_bucket" {
   bucket = var.bucket_name
 
   tags = {
-    Name = "bethel-city-bucket aa-2026"
+    Name = "bethel-city-bucket aa65e-2026"
   }
 }
