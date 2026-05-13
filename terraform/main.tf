@@ -1,10 +1,9 @@
 provider "aws" {
   region = var.region
 }
-
 # Security Group
 resource "aws_security_group" "test_sg" {
-  name = "test-case-sg-raj1"
+  name = "Bethel-City-Sg"
 
   ingress {
     from_port   = 22
@@ -20,9 +19,8 @@ resource "aws_security_group" "test_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
-
 # EC2 Instances
-resource "aws_instance" "test_ec2" {
+resource "aws_instance" "Bethel_ec2" {
   count         = 2
   ami           = var.ami
   instance_type = var.instance_type
@@ -33,12 +31,11 @@ resource "aws_instance" "test_ec2" {
     Name = "server-${count.index + 1}"
   }
 }
-
 # S3 Bucket
-resource "aws_s3_bucket" "bucket1" {
+resource "aws_s3_bucket"  "my_bucket" {
   bucket = var.bucket_name
 
   tags = {
-    Name = "test-case-bucket"
+    Name = "bethel-city-bucket-2026"
   }
 }
