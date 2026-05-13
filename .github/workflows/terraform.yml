@@ -11,7 +11,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: terraform  # Adjust if your Terraform files are in a subfolder
+        working-directory: terraform  # Adjusted Terraform files  in a subfolder
 
     steps:
       - name: Checkout repository
@@ -20,7 +20,7 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
         with:
-          terraform_version: 1.5.7  # You can adjust to your Terraform version
+          terraform_version: 1.5.7  #  Terraform version adjusted
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
