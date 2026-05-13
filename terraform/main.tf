@@ -3,7 +3,7 @@ provider "aws" {
 }
 # Security Group
 resource "aws_security_group" "test_sg" {
-  name = "Bethel-City-Sg-aa"
+  name = "Bethel-City-Sg-aa-2026"
 
   ingress {
     from_port   = 22
